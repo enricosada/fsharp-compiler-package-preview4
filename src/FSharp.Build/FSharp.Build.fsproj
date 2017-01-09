@@ -1,0 +1,40 @@
+﻿<Project Sdk="FSharp.NET.Sdk;Microsoft.NET.Sdk" ToolsVersion="15.0">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <Version>1.0.0-alpha</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="SR.fs" />
+    <Compile Include="reshapedreflection.fs" />
+    <Compile Include="Fsc.fs" />
+    <EmbeddedResource Include="**\*.resx" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <DefineConstants>$(DefineConstants);FX_RESHAPED_REFLECTION;FX_RESHAPED_REFLECTION_CORECLR;FX_NO_CONVERTER;FSHARP_NET_SDK</DefineConstants>
+    <MSBuildPackageVersion>0.1.0-preview-00028-160627</MSBuildPackageVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NETStandard.Library" Version="1.6" />
+    <PackageReference Include="Microsoft.FSharp.Core.netcore" Version="1.0.0-alpha-161023" />
+    <PackageReference Include="FSharp.NET.Sdk" Version="1.0.0-beta-*">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+
+    <!--TODO msbuild are PrivateAssets?-->
+    <PackageReference Include="Microsoft.Build" Version="$(MSBuildPackageVersion)" />
+    <PackageReference Include="Microsoft.Build.Framework" Version="$(MSBuildPackageVersion)" />
+    <PackageReference Include="Microsoft.Build.Tasks.Core" Version="$(MSBuildPackageVersion)" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="$(MSBuildPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="dotnet-compile-fsc">
+      <Version>1.0.0-preview2-020000</Version>
+    </DotNetCliToolReference>
+  </ItemGroup>
+
+</Project>
